@@ -25,6 +25,8 @@ Este es un proyecto creado con [Next.js](https://nextjs.org) que servirá como p
 
 ---
 
+![Vista previa del panel](./public/preview.png)
+
 ## 📦 Instalación
 
 Clona el repositorio e instala las dependencias:
