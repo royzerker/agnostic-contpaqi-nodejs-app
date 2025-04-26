@@ -26,7 +26,7 @@ export const Banner = () => {
 
 	return (
 		<div className="min-h-screen bg-white">
-			<div className="bg-[#1a5aa0] p-4 md:p-6 lg:p-8 mb-8 min-h-[650px] grid place-content-center">
+			<div className="bg-[#1a5aa0] p-4 md:p-6 lg:p-8 mb-16 min-h-[450px] md:min-h-[650px] grid place-content-center">
 				<div className="flex flex-col items-center justify-center py-6 md:py-10 lg:py-12">
 					<h1 className="text-white text-2xl md:text-3xl lg:text-5xl font-bold mb-6 md:mb-10 lg:mb-12">CONTPAQi profit</h1>
 					<div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
@@ -44,8 +44,8 @@ export const Banner = () => {
 			</div>
 
 			<div className="mb-12">
-				<p className="text-[#1a5aa0] font-medium text-center mb-4 md:mb-6 text-sm md:text-base">CONTPAQi® profit partners</p>
-				<div className="flex justify-center items-center gap-4 md:gap-8">
+				<p className="text-[#1a5aa0] font-medium text-center mb-8 md:mb-12 text-sm md:text-base lg:text-xl">CONTPAQi® profit partners</p>
+				<div className="flex justify-center items-center gap-6 md:gap-12">
 					<AlibabaLogo className="h-5 md:h-7 lg:h-8" />
 					<SyncfyLogo className="h-5 md:h-7 lg:h-8" />
 				</div>
