@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { AlibabaLogo } from '../atoms/alibaba-logo'
 import { PepsiLogo } from '../atoms/pepsi-logo'
-import { SyncfyLogo } from '../atoms/syncfy-logo'
 
 export const Banner = () => {
 	const [deviceType, setDeviceType] = useState<'desktop' | 'tablet' | 'mobile'>('desktop')
@@ -47,7 +46,7 @@ export const Banner = () => {
 				<p className="text-[#1a5aa0] font-medium text-center mb-8 md:mb-12 text-sm md:text-base lg:text-xl">CONTPAQi® profit partners</p>
 				<div className="flex justify-center items-center gap-6 md:gap-12">
 					<AlibabaLogo className="h-5 md:h-7 lg:h-8" />
-					<SyncfyLogo className="h-5 md:h-7 lg:h-8" />
+					{/* <SyncfyLogo className="h-5 md:h-7 lg:h-8" /> */}
 				</div>
 			</div>
 		</div>
