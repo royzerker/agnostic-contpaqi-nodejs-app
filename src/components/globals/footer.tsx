@@ -15,7 +15,7 @@ export const Footer = () => {
 					<footer className="mb-2 flex items-center">
 						<Mail className="mr-2 h-4 w-4 text-purple-400" />
 						<Link href="mailto:potencia-logo.svg" className="text-[#999] transition-colors hover:text-purple-400" target="_blank">
-							pottencia@lottus.com
+							soporte@compaqj.com
 						</Link>
 					</footer>
 				</section>
@@ -23,7 +23,7 @@ export const Footer = () => {
 				<Separator className="bg-[#333]" />
 
 				<section className="flex flex-col justify-between gap-6 laptop:flex-row">
-					<span className="order-2 whitespace-nowrap text-sm text-[#999]">© 2024 Scoit. All rights reserved.</span>
+					<span className="order-2 whitespace-nowrap text-sm text-[#999]">© 2025 Scoit. All rights reserved.</span>
 
 					<p className="text-sm text-[#999] laptop:order-2">
 						Built by <span className="text-white">Scoit Experience</span>

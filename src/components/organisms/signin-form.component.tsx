@@ -35,13 +35,14 @@ export const SignInForm = () => {
 		<Form {...form}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="flex-1 rounded-lg bg-gray-50 px-6 py-16">
-					<h1 className={`${lusitana.className} mb-3 text-2xl`}>Please log in to continue.</h1>
+					<h1 className={`${lusitana.className} mb-3 text-2xl`}>Inicie sesión para continuar.</h1>
 					<div className="w-full space-y-4">
-						<TextField id="email" label="Email" control={control} name="email" placeholder="Enter your email address" icon={<AtSign size={18} />} />
+						<TextField id="email" label="Correo Electronico" control={control} name="email" placeholder="Ingresa tu correo electrónico" icon={<AtSign size={18} />} />
 					</div>
 
 					<Button className="mt-4 w-full" aria-disabled={true}>
-						Sign in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+						Iniciar sesión
+						<ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
 					</Button>
 
 					<div className="mt-8 text-center text-sm text-gray-600">
@@ -51,8 +52,8 @@ export const SignInForm = () => {
 						</Link> */}
 						<Typography as="p" className="text-center text-sm text-gray-600">
 							Si no puedes iniciar sesión contacta a el equipo de soporte en
-							{/* <span className="font-medium">soporte@compaqj.com</span> */}
 							<Link href="mailto:soporte@compaqj.com" className="text-blue-600 hover:underline">
+								<br />
 								soporte@compaqj.com
 							</Link>
 						</Typography>

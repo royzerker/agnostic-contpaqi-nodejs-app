@@ -31,9 +31,7 @@ export default function LoginPage() {
 				</div>
 
 				<div className="h-[60%] bg-blue-600 p-16 relative overflow-hidden">
-					{/* Collage of speakers/performers */}
 					<div className="grid grid-cols-3 gap-4 relative z-10">
-						{/* Row 1 */}
 						<div className="relative">
 							<Image src="/placeholder.svg?height=120&width=120" alt="Speaker" width={120} height={120} className="rounded-md object-cover" />
 							<div className="absolute bottom-0 left-0 bg-teal-400 px-2 py-0.5 text-xs text-white">Nombre</div>
