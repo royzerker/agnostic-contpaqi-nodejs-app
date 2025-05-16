@@ -1,28 +1,29 @@
 import { getUsers } from '@/actions/dashboard/actions'
 import { usersTableColumns } from '@/components/molecules'
 import { DataTable } from '@/components/organisms'
-import { mapUserOutputToUserTable } from '@/mappers'
 
-export default async function DashboardPage({
-	searchParams
-}: {
-	searchParams?: {
+interface DashboardPageProps {
+	searchParams: Promise<{
 		search?: string
 		page?: string
 		size?: string
-	}
-}) {
+	}>
+}
+
+export async function DashboardPage({ searchParams }: DashboardPageProps) {
+	const { search, page, size } = await searchParams
+
 	const params = {
-		pageSize: Number(searchParams?.size) || 10,
-		pageNumber: Number(searchParams?.page) || 1,
-		term: searchParams?.search || ''
+		pageSize: Number(size) || 10,
+		pageNumber: Number(page) || 1,
+		term: search || ''
 	}
 
-	console.log(params)
+	const res = await getUsers(params)
 
-	const users = await getUsers(params)
+	console.log('res', res)
 
-	const mappedUsers = users?.items?.map(mapUserOutputToUserTable)
+	const users = res?.[0]
 
 	return (
 		<div className="min-h-[70vh]">
@@ -31,7 +32,7 @@ export default async function DashboardPage({
 				totalItems={users?.totalItems || 0}
 				filterPlaceholder="Filtrar por nombre"
 				columns={usersTableColumns}
-				data={mappedUsers || []}
+				data={users?.items || []}
 				classNames={{ card: 'grid  space-y-0 gap-y-1' }}
 			/>
 		</div>

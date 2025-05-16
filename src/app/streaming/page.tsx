@@ -1,10 +1,12 @@
-import { getStreamingVideo } from '@/actions/dashboard/actions'
+import { getIframe } from '@/actions/dashboard/actions'
 import { Typography } from '@/components/molecules'
 import { Mdx } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 export default async function StreamingPage() {
-	const video = await getStreamingVideo()
+	const res = await getIframe()
+
+	const video = res?.[0]
 
 	const iframeUrl = `<iframe
 			title="vimeo-player"
@@ -16,7 +18,7 @@ export default async function StreamingPage() {
 		/>
 	`
 
-	const iframeUrlFormat = video?.url ? video.url : iframeUrl
+	const iframeUrlFormat = video ? video?.iframeUrl : iframeUrl
 
 	return (
 		<div className="relative flex flex-col bg-black pb-16">

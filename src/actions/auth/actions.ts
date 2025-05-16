@@ -2,99 +2,92 @@
 
 import { Session } from '@/lib/auth/definitions'
 import { createSession, deleteSession, getSession } from '@/lib/auth/session'
-import { FetchOptions, fetchService } from '@/lib/http'
+import { fetchService } from '@/lib/http'
 import { SignInFormType } from '@/schemas'
 import { redirect } from 'next/navigation'
 
 interface IAuthResponse {
 	id: string
 	email: string
-	// firstName: string
-	// lastName: string
-	fullName: string
+	firstName: string
+	lastName: string
+	fullName?: string
 	role: string
-	access_token: string
+	accessToken: string
 }
 
-type errorMsgType = {
-	msg: string
-}
+export const login = async (signInData: SignInFormType): IAsyncTuple<IAuthResponse> => {
+	const service = await fetchService()
 
-export const login = async (signInData: SignInFormType): Promise<errorMsgType | void> => {
-	const API_ENDPOINT = '/authentication/login'
+	const [res, err] = await service.post<IAuthResponse>('/authentication/login', {
+		email: signInData.email
+	})
 
-	const options: FetchOptions = {
-		method: 'POST',
-		body: JSON.stringify(signInData),
-		headers: {
-			'Content-Type': 'application/json'
-		}
-	}
-
-	const [res, err] = await fetchService<IAuthResponse>(API_ENDPOINT, options)
-
-	if (err || !res) {
-		return { msg: `${err?.message}` }
+	if (!!err) {
+		return [null, err]
 	}
 
 	const session: Session = {
-		userId: res.id,
-		token: res.access_token
+		userId: res?.id as string,
+		token: res?.accessToken as string
 	}
 
 	await createSession(session)
 
-	redirect('/streaming')
+	redirect('/video')
 }
 
-export const logout = async (): Promise<errorMsgType | void> => {
+export const logout = async (): IAsyncTuple<void> => {
 	const API_ENDPOINT = '/authentication/logout'
 
 	const session = await getSession()
 
-	const options: FetchOptions = {
-		method: 'POST',
-		body: JSON.stringify({
-			id: session?.userId
-		}),
+	const service = await fetchService()
+	const [_, err] = await service.post<void>(API_ENDPOINT, {
+		id: session?.userId,
 		headers: {
-			'Content-Type': 'application/json'
-		},
-		token: session?.token
-	}
+			Authorization: `Bearer ${session?.token}`
+		}
+	})
 
-	const [_, err] = await fetchService(API_ENDPOINT, options)
-
-	if (err) {
-		return { msg: `Error al cerrar sesión: ${err?.message}` }
+	if (!!err) {
+		return [null, err]
 	}
 
 	deleteSession()
 
-	// Redirigir a home
 	redirect('/')
 }
 
-export const verifyToken = async (): Promise<boolean> => {
+export const verifyToken = async (): IAsyncTuple<boolean> => {
 	const session = await getSession()
 
-	if (!session?.userId) return false
+	if (!session?.userId) {
+		return [false, new Error('No hay sesión activa')]
+	}
 
 	const API_ENDPOINT = `/authentication/verify/${session?.userId}`
 
-	const options: FetchOptions = {
+	const service = await fetchService()
+
+	const [existToken, error] = await service.get<IGenericRecord>(API_ENDPOINT, {
 		method: 'GET',
-		token: session?.token
+		headers: {
+			Authorization: `Bearer ${session?.token}`
+		}
+	})
+
+	if (!!error) {
+		return [false, error]
 	}
 
-	const [existToken, error] = await fetchService<string>(API_ENDPOINT, options)
-
-	/**
-	 * Si hay un error al verificar el token, eliminar la sesión
-	 */
-	if (existToken === 'true') {
-		return true
+	if (!existToken) {
+		return [false, new Error('Token no existe')]
 	}
 
-	return false
+	if (existToken?.status !== 'active') {
+		return [false, new Error('Token no activo')]
+	}
+
+	return [true, null]
 }

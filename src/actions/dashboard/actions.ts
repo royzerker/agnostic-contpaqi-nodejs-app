@@ -1,63 +1,60 @@
 'use server'
 
 import { IUserResponse } from '@/interfaces'
-import { FetchOptions, fetchService } from '@/lib/http'
+import { fetchService } from '@/lib/http'
 import { VideoFormType } from '@/schemas'
-import { revalidateTag } from 'next/cache'
+import { revalidatePath } from 'next/cache'
 
 interface IVideoResponse {
-	id: string
-	url: string
+	title: string
+	iframeUrl: string
 }
 
-export const updateStreamingVideo = async (videoFormData: VideoFormType): Promise<void> => {
-	const API_ENDPOINT = '/streaming'
+export const VIDEO_ID = `681fe05d18c136bdd2510585`
 
-	const options: FetchOptions = {
-		method: 'PUT',
-		body: JSON.stringify(videoFormData),
-		headers: {
-			'Content-Type': 'application/json'
-		}
+export const upserIframe = async (data: VideoFormType): IAsyncTuple<IVideoResponse> => {
+	const service = await fetchService()
+
+	const [video, error] = await service.put<IVideoResponse>(`/videos/${VIDEO_ID}`, {
+		title: data.title,
+		iframeUrl: data.imageUrl
+	})
+
+	if (!!error) {
+		return [null, error]
 	}
 
-	await fetchService<IVideoResponse>(API_ENDPOINT, options)
+	revalidatePath('/dashboard/streaming')
+	revalidatePath('/streaming')
 
-	revalidateTag('streaming-video')
+	return [video, null]
 }
 
-export const getStreamingVideo = async (): Promise<IVideoResponse | null> => {
-	const API_ENDPOINT = `/streaming`
+export const getIframe = async (): IAsyncTuple<IVideoResponse> => {
+	const service = await fetchService()
 
-	const options: FetchOptions = {
+	const [video, error] = await service.get<IVideoResponse>(`/videos/${VIDEO_ID}`)
+
+	if (!!error) {
+		return [null, error]
+	}
+
+	return [video, null]
+}
+
+export const getUsers = async (params?: Record<string, any>): IAsyncTuple<IUserResponse> => {
+	const service = await fetchService()
+
+	const [users, error] = await service.get<IUserResponse>('/user', {
 		method: 'GET',
-		next: {
-			revalidate: 1,
-			tags: ['streaming-video']
+		params: {
+			...params
 		}
+	})
+
+	if (!!error) {
+		return [null, error]
 	}
 
-	const [video, error] = await fetchService<IVideoResponse>(API_ENDPOINT, options)
-
-	if (error || !video) return null
-
-	return video
-}
-
-export const getUsers = async (params?: Record<string, any>): Promise<IUserResponse | null> => {
-	const API_ENDPOINT = `/user`
-
-	const options: FetchOptions = {
-		method: 'GET',
-		params,
-		next: {
-			revalidate: 1
-		}
-	}
-
-	const [users, error] = await fetchService<IUserResponse>(API_ENDPOINT, options)
-
-	if (error || !users) return null
-
-	return users
+	return [users, null]
 }

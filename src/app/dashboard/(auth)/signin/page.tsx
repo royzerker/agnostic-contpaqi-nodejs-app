@@ -3,7 +3,7 @@ import { SignInForm } from '@/components/organisms'
 import { PepsiLogo } from '@/features/components/atoms/pepsi-logo'
 import Image from 'next/image'
 
-export default function LoginPage() {
+export default async function LoginPage() {
 	return (
 		<div className="flex h-screen">
 			<div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8">

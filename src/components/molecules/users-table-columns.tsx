@@ -11,11 +11,7 @@ export const usersTableColumns: ColumnDef<IUserInfoTable>[] = [
 		accessorKey: 'fullName',
 		header: ({ column }) => {
 			return (
-				<Button
-					variant="outline"
-					className="gap-2 rounded-full"
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
+				<Button variant="outline" className="gap-2 rounded-full" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
 					<Typography size="sm" as="span">
 						Nombre completo
 					</Typography>
@@ -35,11 +31,7 @@ export const usersTableColumns: ColumnDef<IUserInfoTable>[] = [
 		accessorKey: 'email',
 		header: ({ column }) => {
 			return (
-				<Button
-					variant="outline"
-					className="gap-2 rounded-full"
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
+				<Button variant="outline" className="gap-2 rounded-full" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
 					Email
 					<ArrowUpDown className="h-4 w-4" />
 				</Button>
@@ -55,11 +47,7 @@ export const usersTableColumns: ColumnDef<IUserInfoTable>[] = [
 		accessorKey: 'firstLogin',
 		header: ({ column }) => {
 			return (
-				<Button
-					variant="outline"
-					className="gap-2 rounded-full"
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
+				<Button variant="outline" className="gap-2 rounded-full" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
 					Primer Login
 					<ArrowUpDown className="h-4 w-4" />
 				</Button>
@@ -80,11 +68,7 @@ export const usersTableColumns: ColumnDef<IUserInfoTable>[] = [
 		accessorKey: 'country',
 		header: ({ column }) => {
 			return (
-				<Button
-					variant="outline"
-					className="gap-2 rounded-full"
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
+				<Button variant="outline" className="gap-2 rounded-full" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
 					País
 					<ArrowUpDown className="h-4 w-4" />
 				</Button>
@@ -106,11 +90,7 @@ export const usersTableColumns: ColumnDef<IUserInfoTable>[] = [
 		accessorKey: 'mode',
 		header: ({ column }) => {
 			return (
-				<Button
-					variant="outline"
-					className="gap-2 rounded-full"
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
+				<Button variant="outline" className="gap-2 rounded-full" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
 					Modo
 					<ArrowUpDown className="h-4 w-4" />
 				</Button>
@@ -131,11 +111,7 @@ export const usersTableColumns: ColumnDef<IUserInfoTable>[] = [
 		accessorKey: 'campus',
 		header: ({ column }) => {
 			return (
-				<Button
-					variant="outline"
-					className="gap-2 rounded-full"
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
+				<Button variant="outline" className="gap-2 rounded-full" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
 					Campus
 					<ArrowUpDown className="h-4 w-4" />
 				</Button>

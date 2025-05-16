@@ -1,6 +1,6 @@
 'use client'
 
-import { updateStreamingVideo } from '@/actions/dashboard/actions'
+import { upserIframe } from '@/actions/dashboard/actions'
 import { VideoFormSchema, VideoFormType } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -17,8 +17,8 @@ export const VideoForm = ({ defaultVideoUrl, defaultVideoId }: VideoFormProps) =
 	const form = useForm<VideoFormType>({
 		resolver: zodResolver(VideoFormSchema),
 		defaultValues: {
-			url: `${defaultVideoUrl}`,
-			id: `${defaultVideoId}`
+			imageUrl: `${defaultVideoUrl}`,
+			title: `${defaultVideoId}`
 		},
 		mode: 'onBlur'
 	})
@@ -27,7 +27,7 @@ export const VideoForm = ({ defaultVideoUrl, defaultVideoId }: VideoFormProps) =
 
 	const onSubmit = async (data: VideoFormType) => {
 		try {
-			await updateStreamingVideo(data)
+			await upserIframe(data)
 			toast('Se actualizo la url del video')
 		} catch (err) {
 			if (err instanceof Error) {
@@ -50,7 +50,7 @@ export const VideoForm = ({ defaultVideoUrl, defaultVideoId }: VideoFormProps) =
 					as={Textarea}
 					label="Url del video"
 					control={control}
-					name="url"
+					name="imageUrl"
 					placeholder="https://"
 				/>
 

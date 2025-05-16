@@ -24,10 +24,11 @@ export const SignInForm = () => {
 	const { handleSubmit, control } = form
 
 	const onSubmit = async (data: SignInFormType) => {
-		const errorMessage = await login(data)
+		const res = await login(data)
 
-		if (errorMessage?.msg) {
-			toast.error(errorMessage.msg)
+		if (res?.[1]) {
+			toast.error('Error al iniciar sesión, verifica tu correo electrónico')
+			return
 		}
 	}
 

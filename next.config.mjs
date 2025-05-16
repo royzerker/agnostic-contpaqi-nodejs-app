@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const config = {
-	/* tus opciones */
+	async rewrites() {
+		return [
+			{
+				source: '/dashboard/users',
+				destination: '/dashboard'
+			}
+		]
+	}
 }
 
 export default config

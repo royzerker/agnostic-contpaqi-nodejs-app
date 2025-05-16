@@ -12,16 +12,6 @@ const sidebarNavItems: { title: string; href: string; icon: keyof typeof dynamic
 		title: 'Streaming',
 		href: '/dashboard/streaming',
 		icon: 'radio'
-	},
-	{
-		title: 'Videos',
-		href: '/dashboard/videos',
-		icon: 'video'
-	},
-	{
-		title: 'Reels',
-		href: '/dashboard/reels',
-		icon: 'list-video'
 	}
 ]
 
@@ -29,7 +19,7 @@ interface SettingsLayoutProps {
 	children: React.ReactNode
 }
 
-export default function SettingsLayout({ children }: SettingsLayoutProps) {
+export default async function SettingsLayout({ children }: SettingsLayoutProps) {
 	return (
 		<>
 			<div className="container my-10">

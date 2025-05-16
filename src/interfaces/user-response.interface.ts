@@ -1,26 +1,14 @@
-export interface IUserInfo {
+export interface IUser {
 	id: string
 	fullName: string
 	email: string
-	active: boolean
-	source: string
-	campus: string
-	nivel: string
-	period: string
-	program: string
-	status: string
-	personalEmail: string
+	firstName: string
+	lastName: string
 	firstLogin: boolean
-	firstDate: Date
-	lastDate: Date
-	paymentPlan: string
-	points: number
-	mode: string
-	role: string
-	country: string
+	firstLoginAt: number
 }
 
 export interface IUserResponse {
 	totalItems: number
-	items: IUserInfo[]
+	items: IUser[]
 }
