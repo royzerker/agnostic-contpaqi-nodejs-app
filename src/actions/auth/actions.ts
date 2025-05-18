@@ -49,8 +49,6 @@ export const logout = async (): IAsyncTuple<void> => {
 		}
 	})
 
-	// console.log('_', _)
-	// console.log('err', err)
 
 	if (!!err) {
 		return [null, err]
