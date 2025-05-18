@@ -10,18 +10,20 @@ interface DashboardPageProps {
 	}>
 }
 
-export async function DashboardPage({ searchParams }: DashboardPageProps) {
+export default async function DashboardPage({ searchParams }: DashboardPageProps) {
 	const { search, page, size } = await searchParams
 
 	const params = {
 		pageSize: Number(size) || 10,
 		pageNumber: Number(page) || 1,
-		term: search || ''
+		term: search || undefined
 	}
 
 	const res = await getUsers(params)
 
-	console.log('res', res)
+	if (!res) {
+		return <div className="min-h-[70vh]">No hay usuarios</div>
+	}
 
 	const users = res?.[0]
 

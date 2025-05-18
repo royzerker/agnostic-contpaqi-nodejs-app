@@ -34,21 +34,23 @@ export const login = async (signInData: SignInFormType): IAsyncTuple<IAuthRespon
 
 	await createSession(session)
 
-	redirect('/video')
+	redirect('/streaming')
 }
 
 export const logout = async (): IAsyncTuple<void> => {
-	const API_ENDPOINT = '/authentication/logout'
-
 	const session = await getSession()
 
 	const service = await fetchService()
-	const [_, err] = await service.post<void>(API_ENDPOINT, {
+
+	const [_, err] = await service.post<void>('/authentication/logout', {
 		id: session?.userId,
 		headers: {
 			Authorization: `Bearer ${session?.token}`
 		}
 	})
+
+	// console.log('_', _)
+	// console.log('err', err)
 
 	if (!!err) {
 		return [null, err]

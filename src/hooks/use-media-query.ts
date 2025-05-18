@@ -1,18 +1,39 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 
 export function useMediaQuery(query: string): boolean {
-	const [matches, setMatches] = useState<boolean>(false)
+	const [matches, setMatches] = useState(() => {
+		if (typeof window !== 'undefined') {
+			return window.matchMedia(query).matches
+		}
+		return false
+	})
 
 	useEffect(() => {
-		// Esto solo se ejecutará en el cliente
+		if (typeof window === 'undefined') return
+
 		const mediaQueryList = window.matchMedia(query)
-		setMatches(mediaQueryList.matches) // Actualizar el estado inicial
 
-		const handleChange = () => setMatches(mediaQueryList.matches)
+		const updateMatch = (event: MediaQueryListEvent) => {
+			setMatches(event.matches)
+		}
 
-		mediaQueryList.addEventListener('change', handleChange)
+		if (mediaQueryList.addEventListener) {
+			mediaQueryList.addEventListener('change', updateMatch)
+		} else {
+			mediaQueryList.addListener(updateMatch)
+		}
 
-		return () => mediaQueryList.removeEventListener('change', handleChange)
+		setMatches(mediaQueryList.matches)
+
+		return () => {
+			if (mediaQueryList.removeEventListener) {
+				mediaQueryList.removeEventListener('change', updateMatch)
+			} else {
+				mediaQueryList.removeListener(updateMatch)
+			}
+		}
 	}, [query])
 
 	return matches

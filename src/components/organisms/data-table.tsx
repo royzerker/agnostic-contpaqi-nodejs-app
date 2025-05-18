@@ -4,7 +4,6 @@ import { ColumnDef, flexRender, getCoreRowModel, SortingState, useReactTable } f
 import * as React from 'react'
 
 import {
-	Button,
 	Card,
 	CardHeader,
 	Input,
@@ -22,7 +21,6 @@ import {
 } from '@/components/ui'
 import { useQueryFilter } from '@/hooks/use-query-filter'
 import { cn } from '@/lib/utils'
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react'
 import { Typography } from '../molecules'
 
 interface DataTableProps<TData, TValue> {
@@ -54,7 +52,7 @@ export const DataTable = <TData, TValue>({ data, columns, classNames, filterBy, 
 	const { handleSearch, getQuery, handleItemPerPage, handlePagination } = useQueryFilter()
 
 	return (
-		<div className={cn('w-full space-y-2 laptop:space-y-4')}>
+		<div className={cn('w-full space-y-2 md:space-y-4')}>
 			<header>
 				<Input
 					placeholder={filterPlaceholder}
@@ -64,9 +62,8 @@ export const DataTable = <TData, TValue>({ data, columns, classNames, filterBy, 
 					defaultValue={getQuery('search')}
 					className="max-w-sm"
 				/>
-				{/* )} */}
 			</header>
-			<Table className="hidden laptop:table">
+			<Table className="hidden md:table">
 				<TableHeader>
 					{table.getHeaderGroups().map(headerGroup => (
 						<TableRow key={headerGroup.id}>
@@ -95,7 +92,7 @@ export const DataTable = <TData, TValue>({ data, columns, classNames, filterBy, 
 				</TableBody>
 			</Table>
 
-			<div className="grid gap-4 tablet:grid-cols-2 laptop:hidden">
+			<div className="grid gap-4 tablet:grid-cols-2 md:hidden">
 				{table.getRowModel().rows?.length ? (
 					table.getRowModel().rows.map(row => (
 						<Card key={row.id} data-state={row.getIsSelected() && 'selected'}>
@@ -120,25 +117,7 @@ export const DataTable = <TData, TValue>({ data, columns, classNames, filterBy, 
 					<Typography size="sm" weight="medium">
 						Filas por página
 					</Typography>
-					{/* {!isServerSide ? (
-						<Select
-							value={`${table.getState().pagination.pageSize}`}
-							onValueChange={value => {
-								table.setPageSize(Number(value))
-							}}
-						>
-							<SelectTrigger className="h-8 w-[70px]">
-								<SelectValue placeholder={table.getState().pagination.pageSize} />
-							</SelectTrigger>
-							<SelectContent side="top">
-								{[10, 20, 30, 40, 50].map(pageSize => (
-									<SelectItem key={pageSize} value={`${pageSize}`} className="cursor-pointer">
-										{pageSize}
-									</SelectItem>
-								))}
-							</SelectContent>
-						</Select>
-					) : ( */}
+
 					<Select
 						value={getQuery('size') || '10'}
 						onValueChange={value => {
@@ -163,125 +142,6 @@ export const DataTable = <TData, TValue>({ data, columns, classNames, filterBy, 
 					<Typography size="sm">
 						Página {getQuery('page') || 1} de {Math.ceil(totalItems / (Number(getQuery('size')) || 10))}
 					</Typography>
-
-					<>
-						{/* {!isServerSide ? (
-							<div className="flex items-center space-x-2">
-								<Button
-									variant="outline"
-									className="hidden h-8 w-8 p-0 lg:flex"
-									onClick={() => table.setPageIndex(0)}
-									disabled={!table.getCanPreviousPage()}
-								>
-									<span className="sr-only">Go to first page</span>
-									<ChevronsLeft className="h-4 w-4" />
-								</Button>
-
-								<Button
-									variant="outline"
-									className="h-8 w-8 p-0"
-									onClick={() => table.previousPage()}
-									disabled={!table.getCanPreviousPage()}
-								>
-									<span className="sr-only">Go to previous page</span>
-									<ChevronLeft className="h-4 w-4" />
-								</Button>
-
-								<Button
-									variant="outline"
-									className="h-8 w-8 p-0"
-									onClick={() => table.nextPage()}
-									disabled={!table.getCanNextPage()}
-								>
-									<span className="sr-only">Go to next page</span>
-									<ChevronRight className="h-4 w-4" />
-								</Button>
-
-								<Button
-									variant="outline"
-									className="hidden h-8 w-8 p-0 lg:flex"
-									onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-									disabled={!table.getCanNextPage()}
-								>
-									<span className="sr-only">Go to last page</span>
-									<ChevronsRight className="h-4 w-4" />
-								</Button>
-							</div>
-						) : ( */}
-						<div className="flex items-center space-x-2">
-							<Button
-								onClick={() => {
-									const firstPage = 1
-									handlePagination(firstPage)
-								}}
-								disabled={(() => {
-									const currentPage = Number(getQuery('page')) || 1
-									return currentPage === 1
-								})()}
-								variant="outline"
-								className="hidden h-8 w-8 p-0 lg:flex"
-							>
-								<span className="sr-only">Go to first page</span>
-								<ChevronsLeft className="h-4 w-4" />
-							</Button>
-
-							<Button
-								onClick={() => {
-									const currentPage = Number(getQuery('page')) || 1
-									const prevPage = Math.max(currentPage - 1, 1)
-									handlePagination(prevPage)
-								}}
-								disabled={(() => {
-									const currentPage = Number(getQuery('page')) || 1
-									return currentPage === 1
-								})()}
-								variant="outline"
-								className="h-8 w-8 p-0"
-							>
-								<span className="sr-only">Go to previous page</span>
-								<ChevronLeft className="h-4 w-4" />
-							</Button>
-
-							<Button
-								onClick={() => {
-									const currentPage = Number(getQuery('page')) || 1
-									const nextPage = currentPage + 1
-									handlePagination(nextPage)
-								}}
-								disabled={(() => {
-									const size = Number(getQuery('size')) || 10
-									const lastPage = Math.ceil(totalItems / size)
-									const currentPage = Number(getQuery('page')) || 1
-									return currentPage >= lastPage
-								})()}
-								variant="outline"
-								className="h-8 w-8 p-0"
-							>
-								<span className="sr-only">Go to next page</span>
-								<ChevronRight className="h-4 w-4" />
-							</Button>
-
-							<Button
-								onClick={() => {
-									const size = Number(getQuery('size')) || 10
-									const lastPage = Math.ceil(totalItems / size)
-									handlePagination(lastPage)
-								}}
-								disabled={(() => {
-									const size = Number(getQuery('size')) || 10
-									const lastPage = Math.ceil(totalItems / size)
-									const currentPage = Number(getQuery('page')) || 1
-									return currentPage >= lastPage
-								})()}
-								variant="outline"
-								className="hidden h-8 w-8 p-0 lg:flex"
-							>
-								<span className="sr-only">Go to last page</span>
-								<ChevronsRight className="h-4 w-4" />
-							</Button>
-						</div>
-						{/* )} */}
-					</>
 				</section>
 			</footer>
 		</div>

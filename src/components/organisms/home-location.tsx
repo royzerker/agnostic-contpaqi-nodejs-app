@@ -10,7 +10,7 @@
 
 // export const HomeLocation = () => {
 // 	return (
-// 		<section className="bg-black py-10 laptop:pt-36">
+// 		<section className="bg-black py-10 md:pt-36">
 // 			<div className="container space-y-10" id="mapa">
 // 				<header>
 // 					<Typography

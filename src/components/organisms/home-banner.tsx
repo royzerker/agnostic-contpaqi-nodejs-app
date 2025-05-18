@@ -35,16 +35,10 @@ const sponsors = [
 export const HomeBanner = () => {
 	return (
 		<section className="relative h-[1000px] w-full">
-			<section className="absolute inset-0 z-10 flex h-full flex-col items-center justify-center gap-10 px-4 text-white laptop:px-0">
+			<section className="absolute inset-0 z-10 flex h-full flex-col items-center justify-center gap-10 px-4 text-white md:px-0">
 				<div className="flex flex-col items-center gap-10 motion-safe:animate-fade-in-up motion-safe:delay-1000">
-					<Typography
-						as="h1"
-						className="text-center font-dharma-gothic uppercase tracking-[-0.015em] text-white laptop:[line-height:0.6_!important]"
-						size="9xl"
-						weight="normal"
-					>
-						Bienvenido a{' '}
-						<span className="bg-gradient-to-r from-white to-purple-600 bg-clip-text uppercase text-transparent">/</span>
+					<Typography as="h1" className="text-center font-dharma-gothic uppercase tracking-[-0.015em] text-white md:[line-height:0.6_!important]" size="9xl" weight="normal">
+						Bienvenido a <span className="bg-gradient-to-r from-white to-purple-600 bg-clip-text uppercase text-transparent">/</span>
 						Pottenc
 						<span
 							className="bg-clip-text text-transparent"
@@ -59,39 +53,21 @@ export const HomeBanner = () => {
 					</Typography>
 
 					<Typography className="mt-2 max-w-[100ch] text-center font-inter text-white" size="xl" weight="medium">
-						Pottencia de Lottus Education es un programa innovador diseñado para dar a los estudiantes las herramientas
-						necesarias para potenciar sus oportunidades académicas, laborales y de empleabilidad en el mundo actual.
+						Pottencia de Lottus Education es un programa innovador diseñado para dar a los estudiantes las herramientas necesarias para potenciar sus oportunidades académicas,
+						laborales y de empleabilidad en el mundo actual.
 					</Typography>
 
-					<Link
-						href="/streaming"
-						className={cn(buttonVariants({ variant: 'secondary', size: 'lg' }), 'rounded-full text-base')}
-					>
+					<Link href="/streaming" className={cn(buttonVariants({ variant: 'secondary', size: 'lg' }), 'rounded-full text-base')}>
 						Ver transmisión en vivo <ArrowUpRight />
 					</Link>
 				</div>
 
 				<footer className="mt-8 flex flex-col items-center gap-14">
-					<Image
-						className="aspect-[193/44] h-11 w-auto"
-						src="/assets/logo-lottus.webp"
-						alt={'Logo Lottus'}
-						width={750}
-						height={500}
-					/>
+					<Image className="aspect-[193/44] h-11 w-auto" src="/assets/logo-lottus.webp" alt={'Logo Lottus'} width={750} height={500} />
 
 					<div className="flex flex-wrap justify-around gap-10">
 						{sponsors.map(sponsor => {
-							return (
-								<Image
-									key={sponsor.title}
-									className="aspect-auto h-8 w-auto object-contain"
-									src={sponsor.logo}
-									alt={sponsor.title}
-									width={750}
-									height={500}
-								/>
-							)
+							return <Image key={sponsor.title} className="aspect-auto h-8 w-auto object-contain" src={sponsor.logo} alt={sponsor.title} width={750} height={500} />
 						})}
 					</div>
 				</footer>

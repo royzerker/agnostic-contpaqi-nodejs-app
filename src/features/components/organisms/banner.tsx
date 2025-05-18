@@ -1,5 +1,6 @@
 'use client'
 
+import { Typography } from '@/components/molecules'
 import { useEffect, useState } from 'react'
 import { AlibabaLogo } from '../atoms/alibaba-logo'
 import { PepsiLogo } from '../atoms/pepsi-logo'
@@ -25,28 +26,33 @@ export const Banner = () => {
 
 	return (
 		<div className="min-h-screen bg-white">
-			<div className="bg-[#1a5aa0] p-4 md:p-6 lg:p-8 mb-16 min-h-[450px] md:min-h-[650px] grid place-content-center">
-				<div className="flex flex-col items-center justify-center py-6 md:py-10 lg:py-12">
-					<h1 className="text-white text-2xl md:text-3xl lg:text-5xl font-bold mb-6 md:mb-10 lg:mb-12">CONTPAQi profit</h1>
-					<div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-						<div className="text-center md:text-left text-white mb-2 md:mb-0">
-							<p className="text-sm md:text-lg lg:text-2xl font-semibold">
-								<span className="text-[#2cd5c4]">CDMX</span> PEPSI CENTER
-							</p>
-							<p className="text-sm md:text-lg lg:text-2xl font-semibold">
-								MIÉ <span className="text-[#2cd5c4]">4 JUN 2025</span>
-							</p>
-						</div>
-						<PepsiLogo className="w-10 md:w-14 lg:w-16 h-10 md:h-14 lg:h-16" />
+			<div className="bg-[#2461A9] px-4 py-24 md:p-48 flex flex-col items-center gap-20 justify-center">
+				<Typography as="h1" size="6xl" className="text-white" weight="bold">
+					CONTPAQi profit
+				</Typography>
+
+				<div className="flex items-center justify-center gap-[2rem]">
+					<div className="text-white">
+						<Typography as="h2" size="4xl" className="text-white" weight="bold">
+							<span className="text-teal-400">CDMX</span> <span className="text-white">PEPSI CENTER</span>
+						</Typography>
+
+						<Typography as="p" size="2xl" className="text-white">
+							MIÉ 4 <span className="text-teal-400">JUN 2025</span>
+						</Typography>
 					</div>
+					<PepsiLogo className="w-24 md:w-24 h-auto" />
 				</div>
 			</div>
 
-			<div className="mb-12">
-				<p className="text-[#1a5aa0] font-medium text-center mb-8 md:mb-12 text-sm md:text-base lg:text-xl">CONTPAQi® profit partners</p>
-				<div className="flex justify-center items-center gap-6 md:gap-12">
-					<AlibabaLogo className="h-5 md:h-7 lg:h-8" />
-					{/* <SyncfyLogo className="h-5 md:h-7 lg:h-8" /> */}
+			<div className="mt-24 flex flex-col items-center justify-center gap-4">
+				<Typography as="p" size="2xl" className="text-[#1a5aa0]">
+					CONTPAQi® profit partners
+				</Typography>
+
+				<div className="flex justify-center items-center gap-8 md:gap-12">
+					<AlibabaLogo className="h-5 md:h-6 lg:h-7" />
+					{/* <SyncfyLogo className="h-5 md:h-6 lg:h-7" /> */}
 				</div>
 			</div>
 		</div>

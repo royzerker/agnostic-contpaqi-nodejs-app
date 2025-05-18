@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 
@@ -9,7 +8,7 @@ interface MdxProps {
 
 export const Mdx: React.FC<MdxProps> = ({ children, className }) => {
 	return (
-		<ReactMarkdown rehypePlugins={[rehypeRaw]} className={cn('prose max-w-none', className)}>
+		<ReactMarkdown rehypePlugins={[rehypeRaw]} >
 			{children}
 		</ReactMarkdown>
 	)

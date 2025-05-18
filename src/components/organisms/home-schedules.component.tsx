@@ -132,13 +132,9 @@ const bluredFadeInAnimationVariants = {
 
 export function HomeSchedules() {
 	return (
-		<main className="mx-auto bg-black py-10 laptop:pb-20" id="agenda">
-			<div className="mx-auto max-w-6xl space-y-12 px-4 laptop:px-0">
-				<Typography
-					as="p"
-					className="bg-gradient-to-t from-[#B28AF2] to-[#3B1FA5] bg-clip-text uppercase text-transparent"
-					size="xl"
-				>
+		<main className="mx-auto bg-black py-10 md:pb-20" id="agenda">
+			<div className="mx-auto max-w-6xl space-y-12 px-4 md:px-0">
+				<Typography as="p" className="bg-gradient-to-t from-[#B28AF2] to-[#3B1FA5] bg-clip-text uppercase text-transparent" size="xl">
 					Agenda
 				</Typography>
 
@@ -174,13 +170,13 @@ export function HomeSchedules() {
 									}}
 									initial="initial"
 									whileInView="animate"
-									className={cn('grid grid-cols-1 items-center gap-y-4 laptop:grid-cols-[360px_auto] laptop:px-20')}
+									className={cn('grid grid-cols-1 items-center gap-y-4 md:grid-cols-[360px_auto] md:px-20')}
 								>
 									<Typography as="p" className="text-white" size="3xl" weight="bold">
 										{schedule.schedule}
 									</Typography>
 
-									<div className="space-y-1 laptop:space-y-2">
+									<div className="space-y-1 md:space-y-2">
 										<Typography as="p" className="uppercase text-white" size="2xl" weight="semibold">
 											{schedule.title}
 										</Typography>

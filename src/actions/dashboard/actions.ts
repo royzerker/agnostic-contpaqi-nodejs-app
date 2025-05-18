@@ -1,6 +1,8 @@
 'use server'
 
+import { VIDEO_ID } from '@/constans/video-id.constant'
 import { IUserResponse } from '@/interfaces'
+import { getSession } from '@/lib/auth/session'
 import { fetchService } from '@/lib/http'
 import { VideoFormType } from '@/schemas'
 import { revalidatePath } from 'next/cache'
@@ -10,15 +12,23 @@ interface IVideoResponse {
 	iframeUrl: string
 }
 
-export const VIDEO_ID = `681fe05d18c136bdd2510585`
-
 export const upserIframe = async (data: VideoFormType): IAsyncTuple<IVideoResponse> => {
+	const session = await getSession()
 	const service = await fetchService()
 
-	const [video, error] = await service.put<IVideoResponse>(`/videos/${VIDEO_ID}`, {
-		title: data.title,
-		iframeUrl: data.imageUrl
-	})
+	const [video, error] = await service.put<IVideoResponse>(
+		`/videos/${VIDEO_ID}`,
+		{
+			title: data.title,
+			iframeUrl: data.imageUrl
+		},
+		{
+			method: 'PUT',
+			headers: {
+				Authorization: `Bearer ${session?.token}`
+			}
+		}
+	)
 
 	if (!!error) {
 		return [null, error]
@@ -31,9 +41,15 @@ export const upserIframe = async (data: VideoFormType): IAsyncTuple<IVideoRespon
 }
 
 export const getIframe = async (): IAsyncTuple<IVideoResponse> => {
+	const session = await getSession()
+
 	const service = await fetchService()
 
-	const [video, error] = await service.get<IVideoResponse>(`/videos/${VIDEO_ID}`)
+	const [video, error] = await service.get<IVideoResponse>(`/videos/${VIDEO_ID}`, {
+		headers: {
+			Authorization: `Bearer ${session?.token}`
+		}
+	})
 
 	if (!!error) {
 		return [null, error]
@@ -45,14 +61,21 @@ export const getIframe = async (): IAsyncTuple<IVideoResponse> => {
 export const getUsers = async (params?: Record<string, any>): IAsyncTuple<IUserResponse> => {
 	const service = await fetchService()
 
-	const [users, error] = await service.get<IUserResponse>('/user', {
-		method: 'GET',
-		params: {
-			...params
+	const filteredParams: Record<string, any> = {}
+	if (params) {
+		for (const [key, value] of Object.entries(params)) {
+			if (value !== undefined && value !== '') {
+				filteredParams[key] = value
+			}
 		}
-	})
+	}
 
-	if (!!error) {
+	const searchParams = new URLSearchParams(filteredParams).toString()
+	const API_ENDPOINT = `/user${searchParams ? `?${searchParams}` : ''}`
+
+	const [users, error] = await service.get<IUserResponse>(API_ENDPOINT)
+
+	if (error) {
 		return [null, error]
 	}
 

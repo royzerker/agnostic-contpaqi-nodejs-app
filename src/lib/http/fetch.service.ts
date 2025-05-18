@@ -113,12 +113,11 @@ export interface HttpService {
 }
 
 export interface RequestConfig {
-	method: 'GET' | 'POST' | 'PUT' | 'DELETE'
+	method?: 'GET' | 'POST' | 'PUT' | 'DELETE'
 	headers?: HeadersInit
 	body?: BodyInit | null
 	signal?: AbortSignal
 	query?: Record<string, any>
-	params?: Record<string, any>
 	next?: {
 		revalidate?: number
 	}

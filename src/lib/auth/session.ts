@@ -11,20 +11,23 @@ export const SESSION_NAME = '_platform_agnostic_next_'
 export const createSession = async (session: Session): Promise<void> => {
 	const sessionString = JSON.stringify(session)
 
-	cookies().set(SESSION_NAME, sessionString, {
+	const _cookies = await cookies()
+	_cookies.set(SESSION_NAME, sessionString, {
 		httpOnly: true,
-		secure: process.env.NODE_ENV === 'production', // Use only in production
+		secure: process.env.NODE_ENV === 'production',
 		sameSite: 'strict',
 		path: '/'
 	})
 }
 
-/**
+/**	console.log('session', session)
+
  * Eliminar la sesión simplemente eliminando la cookie
  * @returns void
  */
-export const deleteSession = (): void => {
-	cookies().delete(SESSION_NAME)
+export const deleteSession =  async (): Promise<void> => {
+	const _cookies = await cookies()
+	_cookies.delete(SESSION_NAME)
 }
 
 /**
@@ -32,7 +35,9 @@ export const deleteSession = (): void => {
  * @returns  La sesión actual del usuario o null si no hay ninguna
  */
 export const getSession = async (): Promise<Session | null> => {
-	const sessionString = cookies().get(SESSION_NAME)?.value
+	const _cookies = await cookies()
+
+	const sessionString = _cookies.get(SESSION_NAME)?.value
 
 	if (!sessionString) {
 		console.error('La cookie de sesión está vacía')

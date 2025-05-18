@@ -24,9 +24,9 @@ export const Navigation = ({ session }: NavigationProps) => {
 	}
 
 	return (
-		<nav className={cn('sticky top-0 z-50 shadow-lg transition-colors duration-300', isOpen ? 'bg-foreground' : 'bg-black')}>
-			<div className="relative mx-auto max-w-6xl px-4 laptop:px-0">
-				<div className={cn('flex items-center justify-between border-b border-transparent py-3 laptop:py-4', isOpen ? 'border-b border-[#333]' : '')}>
+		<nav className={cn('sticky top-0 z-50 shadow-lg transition-colors duration-300', isOpen ? 'bg-foreground' : 'bg-[#2461A9]')}>
+			<div className="relative mx-auto max-w-6xl px-4 md:px-0">
+				<div className={cn('flex items-center justify-between border-b border-transparent py-3 md:py-4', isOpen ? 'border-b border-[#333]' : '')}>
 					<header className="flex space-x-7">
 						<Link href="/" className="flex items-center">
 							<CONTPAQiLogo className="max-w-[150px]" />
@@ -40,10 +40,10 @@ export const Navigation = ({ session }: NavigationProps) => {
 								{!!session?.userId ? (
 									<Button
 										onClick={async () => {
-											const errorMessage = await logout()
+											const res = await logout()
 
-											if (errorMessage) {
-												toast.error(errorMessage.msg)
+											if (res?.[1]) {
+												toast.error(res[1].message)
 												return
 											}
 										}}
@@ -77,10 +77,10 @@ export const Navigation = ({ session }: NavigationProps) => {
 							{!!session?.userId ? (
 								<Button
 									onClick={async () => {
-										const errorMessage = await logout()
+										const res = await logout()
 
-										if (errorMessage) {
-											toast.error(errorMessage.msg)
+										if (res?.[1]) {
+											toast.error(res[1].message)
 											return
 										}
 
