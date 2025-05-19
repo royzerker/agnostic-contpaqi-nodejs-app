@@ -25,7 +25,7 @@ export const createSession = async (session: Session): Promise<void> => {
  * Eliminar la sesión simplemente eliminando la cookie
  * @returns void
  */
-export const deleteSession =  async (): Promise<void> => {
+export const deleteSession = async (): Promise<void> => {
 	const _cookies = await cookies()
 	_cookies.delete(SESSION_NAME)
 }
@@ -40,7 +40,6 @@ export const getSession = async (): Promise<Session | null> => {
 	const sessionString = _cookies.get(SESSION_NAME)?.value
 
 	if (!sessionString) {
-		console.error('La cookie de sesión está vacía')
 		return null
 	}
 
@@ -54,13 +53,11 @@ export const getSession = async (): Promise<Session | null> => {
 		 * Verificar que la cookie de sesión tenga el formato correcto
 		 */
 		if (!session || typeof session.userId !== 'string' || typeof session.token !== 'string') {
-			console.error('La cookie de sesión no tiene el formato correcto', session)
 			return null
 		}
 
 		return session
 	} catch (error) {
-		console.error('Error al analizar la cookie de sesión:', error)
 		return null
 	}
 }

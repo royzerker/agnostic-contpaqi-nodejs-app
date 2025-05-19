@@ -25,7 +25,7 @@ export const Navigation = ({ session }: NavigationProps) => {
 
 	return (
 		<nav className={cn('sticky top-0 z-50 shadow-lg transition-colors duration-300', isOpen ? 'bg-foreground' : 'bg-[#2461A9]')}>
-			<div className="relative mx-auto max-w-6xl px-4 md:px-0">
+			<div className="relative mx-auto container">
 				<div className={cn('flex items-center justify-between border-b border-transparent py-3 md:py-4', isOpen ? 'border-b border-[#333]' : '')}>
 					<header className="flex space-x-7">
 						<Link href="/" className="flex items-center">
@@ -36,7 +36,6 @@ export const Navigation = ({ session }: NavigationProps) => {
 					<section className="hidden items-center space-x-1 md:flex">
 						<ul className="flex items-center gap-x-[32px]">
 							<li>
-								{/* auth buttons */}
 								{!!session?.userId ? (
 									<Button
 										onClick={async () => {
@@ -57,14 +56,12 @@ export const Navigation = ({ session }: NavigationProps) => {
 						</ul>
 					</section>
 
-					{/* Sheet open */}
 					<button className="text-white md:hidden" onClick={() => setIsOpen(!isOpen)}>
 						<AlignLeft size="26" />
 					</button>
 				</div>
 			</div>
 
-			{/* Sheet */}
 			<section
 				className={cn(
 					isOpen ? 'h-[350px]' : 'h-0',

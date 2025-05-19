@@ -24,14 +24,14 @@ export default async function LoginPage() {
 								MIÉ 4 <span className="text-teal-400">JUN 2025</span>
 							</Typography>
 						</div>
-						<div className="w-35 h-35 relative">
-							<PepsiLogo className="w-full h-auto" />{' '}
+						<div className="w-25 h-25 relative">
+							<PepsiLogo className="w-full h-auto" />
 						</div>
 					</div>
 				</div>
 
-				<div className="h-[60%] bg-blue-600 grid place-content-center overflow-hidden">
-					<Image src="/logo_bg.svg" alt="Placeholder" width={400} height={400} className="h-auto w-[550px] opacity-70" style={{ objectFit: 'cover' }} />
+				<div className="h-[60%] bg-[#2461A9] grid place-content-center overflow-hidden">
+					<Image src="/logo_bg.svg" alt="Placeholder" width={400} height={400} className="h-auto w-[500px] opacity-70" style={{ objectFit: 'cover' }} />
 				</div>
 			</div>
 		</div>

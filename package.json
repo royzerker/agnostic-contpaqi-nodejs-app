@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint"
@@ -49,6 +49,7 @@
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "^3",
+		"@next/bundle-analyzer": "^15.3.2",
 		"@tailwindcss/postcss": "^4",
 		"@tailwindcss/typography": "^0.5.16",
 		"@types/google.maps": "^3.58.1",

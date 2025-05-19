@@ -23,7 +23,7 @@ export default async function StreamingPage() {
 			<div className="absolute left-0 top-0 h-64 w-64 rounded-full bg-[#2461A9]/20 blur-3xl"></div>
 			<div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[#2461A9]/10 blur-3xl"></div>
 
-			<main className="relative z-10 mx-auto w-full max-w-6xl space-y-8 py-8 md:py-12">
+			<main className="relative z-10 mx-auto w-full container space-y-8 py-8 md:py-12">
 				<div className="space-y-2">
 					<Typography as="h1" className="text-center text-white md:text-left" size="4xl" weight="semibold">
 						Conferencia CONTPAQi profit

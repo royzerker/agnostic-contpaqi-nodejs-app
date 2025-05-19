@@ -42,13 +42,17 @@ export const logout = async (): IAsyncTuple<void> => {
 
 	const service = await fetchService()
 
-	const [_, err] = await service.post<void>('/authentication/logout', {
-		id: session?.userId,
-		headers: {
-			Authorization: `Bearer ${session?.token}`
+	const [_, err] = await service.post<void>(
+		'/authentication/logout',
+		{
+			id: session?.userId
+		},
+		{
+			headers: {
+				Authorization: `Bearer ${session?.token}`
+			}
 		}
-	})
-
+	)
 
 	if (!!err) {
 		return [null, err]

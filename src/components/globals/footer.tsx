@@ -10,7 +10,7 @@ export const Footer = () => {
 				<div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-white/10"></div>
 				<div className="absolute -left-10 bottom-0 h-32 w-32 rounded-full bg-white/5"></div>
 
-				<div className="mx-auto max-w-6xl px-4 py-10 md:px-0">
+				<div className="container mx-auto py-10">
 					<div className="flex flex-col gap-y-8">
 						<div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
 							<figure className="relative z-10">
