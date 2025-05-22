@@ -25,7 +25,7 @@ export const Navigation = ({ session }: NavigationProps) => {
 
 	return (
 		<nav className={cn('sticky top-0 z-50 shadow-lg transition-colors duration-300', isOpen ? 'bg-foreground' : 'bg-[#2461A9]')}>
-			<div className="relative mx-auto container">
+			<div className="px-4 md:px-0 relative mx-auto container">
 				<div className={cn('flex items-center justify-between border-b border-transparent py-3 md:py-4', isOpen ? 'border-b border-[#333]' : '')}>
 					<header className="flex space-x-7">
 						<Link href="/" className="flex items-center">

@@ -53,9 +53,9 @@ export const SignInForm = () => {
 						</Link> */}
 						<Typography as="p" className="text-center text-sm text-gray-600">
 							Si no puedes iniciar sesión contacta a el equipo de soporte en
-							<Link href="mailto:soporte@compaqj.com" className="text-blue-600 hover:underline">
+							<Link href="mailto:soporte@compaqi.com" className="text-blue-600 hover:underline">
 								<br />
-								soporte@compaqj.com
+								soporte@compaqi.com
 							</Link>
 						</Typography>
 					</div>
