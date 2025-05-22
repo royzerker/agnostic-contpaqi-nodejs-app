@@ -3,7 +3,7 @@ import { verifyToken } from './actions/auth/actions'
 import { getSession, SESSION_NAME } from './lib/auth/session'
 
 const protectedRoutePatterns = [/^\/dashboard/, /^\/streaming/]
-const authRoutes = ['/signin']
+const authRoutes = ['/signin', '/']
 
 export default async function middleware(req: NextRequest) {
 	const path = req.nextUrl.pathname
@@ -23,7 +23,7 @@ export default async function middleware(req: NextRequest) {
 	}
 
 	/**
-	 * Si se intenta acceder a una ruta de inicio de sesión con una sesión, redirigir a la página de inicio
+	 * Si se intenta acceder a una ruta de inicio de sesión con una sesión o la pagina principal, redirigir a la página de streaming
 	 */
 	if (isAuthRoute && session?.userId) {
 		return NextResponse.redirect(new URL('/streaming', req.url))
