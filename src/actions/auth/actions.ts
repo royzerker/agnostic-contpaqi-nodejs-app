@@ -49,6 +49,7 @@ export const logout = async (): IAsyncTuple<void> => {
 		},
 		{
 			headers: {
+				'Content-Type': 'application/json',
 				Authorization: `Bearer ${session?.token}`
 			}
 		}

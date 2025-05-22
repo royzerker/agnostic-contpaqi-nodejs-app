@@ -1,50 +1,46 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { Radio, Users } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { cn } from '@/lib/utils'
-import { TooltipProvider } from '@radix-ui/react-tooltip'
-import dynamicIconImports from 'lucide-react/dynamicIconImports'
-import React from 'react'
-import { Tooltip, TooltipContent, TooltipTrigger } from '../ui'
-import { Icon } from '../ui/icon.component'
-
-interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
-	items: {
-		href: string
-		title: string
-		icon?: keyof typeof dynamicIconImports
-	}[]
+interface SidebarNavProps {
+	className?: string
 }
 
-export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
+export const SidebarNav = ({ className }: SidebarNavProps) => {
 	const pathname = usePathname()
 
+	const navItems = [
+		{
+			title: 'Lista de usuarios',
+			href: '/dashboard/users',
+			icon: Users
+		},
+		{
+			title: 'Streaming',
+			href: '/dashboard/streaming',
+			icon: Radio
+		}
+	]
+
 	return (
-		<TooltipProvider>
-			<nav className={cn('flex w-full flex-col gap-1', className)} {...props}>
-				{items.map(item => (
-					<Tooltip key={item.href} delayDuration={0}>
-						<TooltipTrigger asChild>
-							<Link
-								key={item.href}
-								href={item.href}
-								className={cn(
-									'flex items-center gap-2 rounded-md p-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
-									pathname === item.href ? 'bg-muted-foreground/20' : 'hover:bg-muted-foreground/10',
-									'md:justify-start'
-								)}
-							>
-								<Icon name={item.icon!} size={18} className="aspect-square" /> <span className="hidden md:block">{item.title}</span>
-							</Link>
-						</TooltipTrigger>
-						<TooltipContent side="right" className="md:hidden">
+		<nav className={cn('flex flex-col space-y-1', className)}>
+			{navItems.map(item => {
+				const Icon = item.icon
+				const isActive = pathname === item.href
+
+				return (
+					<Button key={item.href} variant={isActive ? 'secondary' : 'ghost'} className={cn('justify-start', isActive ? 'bg-muted font-medium' : 'font-normal')} asChild>
+						<Link href={item.href}>
+							<Icon className="mr-2 h-4 w-4" />
 							{item.title}
-						</TooltipContent>
-					</Tooltip>
-				))}
-			</nav>
-		</TooltipProvider>
+						</Link>
+					</Button>
+				)
+			})}
+		</nav>
 	)
 }
