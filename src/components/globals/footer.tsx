@@ -41,9 +41,9 @@ export const Footer = () => {
 						<div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
 							<span className="text-sm text-white/80">© 2025 Scoit. All rights reserved.</span>
 
-							<p className="text-sm text-white/80">
+							{/* <p className="text-sm text-white/80">
 								Built by <span className="font-medium text-white">Scoit Experience</span>
-							</p>
+							</p> */}
 						</div>
 					</div>
 				</div>
