@@ -7,7 +7,7 @@ interface SettingsLayoutProps {
 
 export default async function SettingsLayout({ children }: SettingsLayoutProps) {
 	return (
-		<div className="container mx-auto my-10">
+		<div className="px-4 md:px-0 container mx-auto my-10">
 			<header className="space-y-0.5">
 				<h2 className="text-2xl font-bold tracking-tight">Dashboard</h2>
 				<p className="text-muted-foreground">Maneja tus configuraciones y preferencias.</p>
