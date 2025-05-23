@@ -36,7 +36,7 @@ export const SidebarNav = ({ className }: SidebarNavProps) => {
 					<Button key={item.href} variant={isActive ? 'secondary' : 'ghost'} className={cn('justify-start', isActive ? 'bg-muted font-medium' : 'font-normal')} asChild>
 						<Link href={item.href}>
 							<Icon className="mr-2 h-4 w-4" />
-							{item.title}
+							<span className="hidden lg:inline">{item.title}</span>
 						</Link>
 					</Button>
 				)
