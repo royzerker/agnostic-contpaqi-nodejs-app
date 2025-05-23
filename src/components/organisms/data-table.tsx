@@ -4,6 +4,7 @@ import { ColumnDef, flexRender, getCoreRowModel, SortingState, useReactTable } f
 import * as React from 'react'
 
 import {
+	Button,
 	Card,
 	CardHeader,
 	Input,
@@ -21,6 +22,7 @@ import {
 } from '@/components/ui'
 import { useQueryFilter } from '@/hooks/use-query-filter'
 import { cn } from '@/lib/utils'
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react'
 import { Typography } from '../molecules'
 
 interface DataTableProps<TData, TValue> {
@@ -92,7 +94,7 @@ export const DataTable = <TData, TValue>({ data, columns, classNames, filterBy, 
 				</TableBody>
 			</Table>
 
-			<div className="grid gap-4 tablet:grid-cols-2 md:hidden">
+			<div className="grid gap-4 md:grid-cols-2 md:hidden">
 				{table.getRowModel().rows?.length ? (
 					table.getRowModel().rows.map(row => (
 						<Card key={row.id} data-state={row.getIsSelected() && 'selected'}>
@@ -104,7 +106,7 @@ export const DataTable = <TData, TValue>({ data, columns, classNames, filterBy, 
 						</Card>
 					))
 				) : (
-					<Card className="tablet:col-span-2">
+					<Card className="md:col-span-2">
 						<CardHeader>
 							<Typography size="sm">No results.</Typography>
 						</CardHeader>
@@ -113,7 +115,7 @@ export const DataTable = <TData, TValue>({ data, columns, classNames, filterBy, 
 			</div>
 
 			<footer className="flex items-center justify-between">
-				<section className="hidden items-center gap-2 tablet:flex">
+				<section className="hidden items-center gap-2 md:flex">
 					<Typography size="sm" weight="medium">
 						Filas por página
 					</Typography>
@@ -138,10 +140,85 @@ export const DataTable = <TData, TValue>({ data, columns, classNames, filterBy, 
 					{/* )} */}
 				</section>
 
-				<section className="flex w-full items-center justify-between gap-2 tablet:w-max tablet:justify-start">
+				<section className="flex w-full items-center justify-between gap-2 md:w-max md:justify-start">
 					<Typography size="sm">
 						Página {getQuery('page') || 1} de {Math.ceil(totalItems / (Number(getQuery('size')) || 10))}
 					</Typography>
+
+					<>
+						<div className="flex items-center space-x-2">
+							<Button
+								onClick={() => {
+									const firstPage = 1
+									handlePagination(firstPage)
+								}}
+								disabled={(() => {
+									const currentPage = Number(getQuery('page')) || 1
+									return currentPage === 1
+								})()}
+								variant="outline"
+								className="hidden h-8 w-8 p-0 lg:flex"
+							>
+								<span className="sr-only">Go to first page</span>
+								<ChevronsLeft className="h-4 w-4" />
+							</Button>
+
+							<Button
+								onClick={() => {
+									const currentPage = Number(getQuery('page')) || 1
+									const prevPage = Math.max(currentPage - 1, 1)
+									handlePagination(prevPage)
+								}}
+								disabled={(() => {
+									const currentPage = Number(getQuery('page')) || 1
+									return currentPage === 1
+								})()}
+								variant="outline"
+								className="h-8 w-8 p-0"
+							>
+								<span className="sr-only">Go to previous page</span>
+								<ChevronLeft className="h-4 w-4" />
+							</Button>
+
+							<Button
+								onClick={() => {
+									const currentPage = Number(getQuery('page')) || 1
+									const nextPage = currentPage + 1
+									handlePagination(nextPage)
+								}}
+								disabled={(() => {
+									const size = Number(getQuery('size')) || 10
+									const lastPage = Math.ceil(totalItems / size)
+									const currentPage = Number(getQuery('page')) || 1
+									return currentPage >= lastPage
+								})()}
+								variant="outline"
+								className="h-8 w-8 p-0"
+							>
+								<span className="sr-only">Go to next page</span>
+								<ChevronRight className="h-4 w-4" />
+							</Button>
+
+							<Button
+								onClick={() => {
+									const size = Number(getQuery('size')) || 10
+									const lastPage = Math.ceil(totalItems / size)
+									handlePagination(lastPage)
+								}}
+								disabled={(() => {
+									const size = Number(getQuery('size')) || 10
+									const lastPage = Math.ceil(totalItems / size)
+									const currentPage = Number(getQuery('page')) || 1
+									return currentPage >= lastPage
+								})()}
+								variant="outline"
+								className="hidden h-8 w-8 p-0 lg:flex"
+							>
+								<span className="sr-only">Go to last page</span>
+								<ChevronsRight className="h-4 w-4" />
+							</Button>
+						</div>
+					</>
 				</section>
 			</footer>
 		</div>

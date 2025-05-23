@@ -30,34 +30,12 @@ export default async function StreamingPage() {
 
 				<div className="overflow-hidden rounded-xl bg-black shadow-2xl ring-1 ring-white/10">
 					<div className="relative pt-[56.25%]">
-						{/* <Mdx>{iframeUrlFormat.replace(/<iframe/gi, `<iframe className="absolute top-0 left-0 w-full h-full"`)}</Mdx> */}
-
 						<div
 							className="absolute top-0 left-0 h-full w-full"
 							dangerouslySetInnerHTML={{
 								__html: iframeUrlFormat.replace(/<iframe/gi, '<iframe class="absolute top-0 left-0 w-full h-full"')
 							}}
 						/>
-
-						{/* <div className="absolute bottom-0 left-0 right-0 hidden bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 transition-opacity group-hover:opacity-100 md:block">
-							<div className="flex items-center gap-4">
-								<Button size="icon" variant="ghost" className="h-8 w-8 rounded-full bg-white/10 text-white hover:bg-white/20">
-									<Play className="h-4 w-4 fill-white" />
-								</Button>
-								<div className="h-1 flex-1 rounded-full bg-white/20">
-									<div className="h-full w-1/3 rounded-full bg-[#2461A9]"></div>
-								</div>
-								<Button size="icon" variant="ghost" className="h-8 w-8 rounded-full bg-white/10 text-white hover:bg-white/20">
-									<Volume2 className="h-4 w-4" />
-								</Button>
-								<Button size="icon" variant="ghost" className="h-8 w-8 rounded-full bg-white/10 text-white hover:bg-white/20">
-									<Settings className="h-4 w-4" />
-								</Button>
-								<Button size="icon" variant="ghost" className="h-8 w-8 rounded-full bg-white/10 text-white hover:bg-white/20">
-									<Maximize className="h-4 w-4" />
-								</Button>
-							</div>
-						</div> */}
 					</div>
 				</div>
 
