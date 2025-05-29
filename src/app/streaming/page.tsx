@@ -1,5 +1,6 @@
 import { getIframe } from '@/actions/dashboard/actions'
 import { Typography } from '@/components/molecules'
+import { AlibabaLogo } from '@/features/components/atoms/alibaba-logo'
 
 export default async function StreamingPage() {
 	const [video, error] = await getIframe()
@@ -51,13 +52,24 @@ export default async function StreamingPage() {
 						<ul className="space-y-2 text-white/70">
 							<li className="flex justify-between">
 								<span>Taller de implementación</span>
-								<span>28 Mayo</span>
+								<span>4 Junio 2025</span>
 							</li>
 							<li className="flex justify-between">
 								<span>Sesión de preguntas</span>
-								<span>2 Junio</span>
+								<span>4 Junio 2025</span>
 							</li>
 						</ul>
+					</div>
+				</div>
+
+				<div className="my-24 flex flex-col items-center justify-center gap-4">
+					<Typography as="p" size="2xl" className="text-[#1a5aa0]">
+						CONTPAQi® profit partners
+					</Typography>
+
+					<div className="flex justify-center items-center gap-8 md:gap-12">
+						<AlibabaLogo className="h-5 md:h-6 lg:h-7" />
+						{/* <SyncfyLogo className="h-5 md:h-6 lg:h-7" /> */}
 					</div>
 				</div>
 			</main>

@@ -4,6 +4,10 @@ const config = {
 	async rewrites() {
 		return [
 			{
+				source: '/',
+				destination: '/signin'
+			},
+			{
 				source: '/dashboard/users',
 				destination: '/dashboard'
 			}
