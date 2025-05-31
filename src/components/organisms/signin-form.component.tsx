@@ -93,7 +93,7 @@ export const SignInForm = () => {
 					</div>
 
 					<div className="my-6 md:my-12 flex flex-col items-center justify-center gap-4">
-						<Typography as="p" size="2xl" className="text-[#2461A9]">
+						<Typography as="p" size="xl" weight="semibold" className="text-[#2461A9]">
 							CONTPAQi® profit partner
 						</Typography>
 

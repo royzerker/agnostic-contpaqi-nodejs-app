@@ -27,11 +27,11 @@ export default async function StreamingPage() {
 				<div className="space-y-6">
 					<div className="relative">
 						{/* Decorative element */}
-						<div className="absolute -left-2 -top-2 h-16 w-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 opacity-70 blur-md"></div>
+						{/* <div className="absolute -left-2 -top-2 h-16 w-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 opacity-70 blur-md"></div> */}
 
 						<div className="flex flex-col md:flex-row md:items-end md:gap-4">
-							<Typography as="h1" className="text-center text-white md:text-left" size="4xl" weight="semibold">
-								Conferencia CONTPAQi Profit Partner
+							<Typography as="h1" className="text-center text-white md:text-left" size="3xl" weight="semibold">
+								Conferencia CONTPAQi Profit
 							</Typography>
 
 							{session?.userId && (
@@ -46,7 +46,7 @@ export default async function StreamingPage() {
 						</div>
 
 						<p className="mt-3 text-center text-white/70 md:text-left">
-							Transmisión en vivo • 4 Junio 2024
+							Transmisión en vivo • 4 Junio 2025
 							{session?.userId && (
 								<span className="inline-block ml-2 animate-pulse">
 									<span className="inline-block h-2 w-2 rounded-full bg-green-400"></span>
@@ -70,29 +70,29 @@ export default async function StreamingPage() {
 						<div className="rounded-xl bg-white/5 p-6 backdrop-blur-sm">
 							<h3 className="mb-2 text-xl font-semibold text-white">Detalles del evento</h3>
 							<p className="text-white/70">
-								Detalles del evento "CONTPAQi Profit® es más que un congreso; es una plataforma transformadora diseñada para inspirar, educar y conectar a contadores, empresarios y
-								emprendedores en México. Desde hace 9 años, hemos reunido a líderes de opinión, expertos en tecnología y pioneros en innovación para comparJr las ideas,
-								herramientas y estrategias que marcan la diferencia."
+								CONTPAQi Profit® es más que un congreso; es una plataforma transformadora diseñada para inspirar, educar y conectar a contadores, empresarios y emprendedores en
+								México. Desde hace 9 años, hemos reunido a líderes de opinión, expertos en tecnología y pioneros en innovación para comparJr las ideas, herramientas y estrategias
+								que marcan la diferencia.
 							</p>
 						</div>
 						<div className="rounded-xl bg-[#2461A9]/20 p-6 backdrop-blur-sm">
 							<h3 className="mb-2 text-xl font-semibold text-white">Próximos eventos</h3>
 							<ul className="space-y-2 text-white/70">
-								<li className="grid grid-cols-4 items-center gap-2">
-									<div className="col-span-3">
-										<span className="text-white/70">Diplomado en Auditoría Digital y Cumplimiento Fiscal con CONTPAQi Analiza</span>
+								<li className="grid grid-cols-1 lg:grid-cols-4 items-center gap-2">
+									<div className="lg:col-span-3">
+										<span className="text-white/70">Lectura Bancaria Inteligente: El Siguiente Paso en tu Contabilidad desde CONTPAQi Bancos</span>
 									</div>
-									<div className="text-right">
-										<span className="text-white/80 font-medium whitespace-nowrap">30 Junio 2025</span>
+									<div className="lg:text-right">
+										<span className="text-white/80 font-medium whitespace-nowrap">5 Junio 2025</span>
 									</div>
 								</li>
 
-								<li className="grid grid-cols-4 items-center gap-2">
-									<div className="col-span-3">
-										<span className="text-white/70">Taller: Automatización de Procesos Contables con CONTPAQi</span>
+								<li className="grid grid-cols-1 lg:grid-cols-4 items-center gap-2">
+									<div className="lg:col-span-3">
+										<span className="text-white/70">Diplomado en Auditoría Digital y Cumplimiento Fiscal con CONTPAQi Analiza</span>
 									</div>
-									<div className="text-right">
-										<span className="text-white/80 font-medium whitespace-nowrap">15 Julio 2025</span>
+									<div className="lg:text-right">
+										<span className="text-white/80 font-medium whitespace-nowrap">15 junio 2025</span>
 									</div>
 								</li>
 							</ul>
@@ -100,12 +100,12 @@ export default async function StreamingPage() {
 					</div>
 
 					<div className="my-24 flex flex-col items-center justify-center gap-4">
-						<Typography as="p" size="2xl" className="text-white">
-							CONTPAQi® profit partner
+						<Typography as="p" size="xl" weight="semibold" className="text-white">
+							CONTPAQi® Profit Partner
 						</Typography>
 
 						<div className="flex justify-center items-center gap-8 md:gap-12">
-							<AlibabaLogo className="h-4 md:h-5 lg:h-6" />
+							<AlibabaLogo className="h-3 md:h-4 lg:h-5" />
 							{/* <SyncfyLogo className="h-5 md:h-6 lg:h-7" /> */}
 						</div>
 					</div>
