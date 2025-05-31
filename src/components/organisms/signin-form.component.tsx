@@ -1,10 +1,9 @@
 'use client'
 
 import { login } from '@/actions/auth/actions'
-import { lusitana } from '@/app/fonts/fonts'
-import { SignInFormSchema, SignInFormType } from '@/schemas'
+import { SignInFormSchema, type SignInFormType } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ArrowRightIcon, AtSign } from 'lucide-react'
+import { ArrowRightIcon, Mail } from 'lucide-react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -34,29 +33,61 @@ export const SignInForm = () => {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className="flex-1 rounded-lg bg-gray-50 px-6 py-16">
-					<h1 className={`${lusitana.className} mb-3 text-2xl`}>Inicie sesión para continuar.</h1>
-					<div className="w-full space-y-4">
-						<TextField id="email" label="Correo Electronico" control={control} name="email" placeholder="Ingresa tu correo electrónico" icon={<AtSign size={18} />} />
+			<form onSubmit={handleSubmit(onSubmit)} className="w-full">
+				<div className="space-y-6">
+					{/* Email Field with enhanced styling */}
+					<div className="space-y-2">
+						<TextField
+							id="email"
+							label="Correo Electrónico"
+							control={control}
+							name="email"
+							placeholder="tu@email.com"
+							icon={<Mail size={18} className="text-gray-400" />}
+							className="w-full"
+						/>
 					</div>
 
-					<Button className="mt-4 w-full" aria-disabled={true}>
-						Iniciar sesión
-						<ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+					{/* Enhanced Submit Button */}
+					<Button
+						type="submit"
+						className="w-full bg-gradient-to-r from-[#2461A9] via-blue-600 to-cyan-500 hover:from-[#1e4f8b] hover:via-blue-700 hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-[1.02] hover:shadow-xl border-0 group"
+						aria-disabled={false}
+					>
+						<span className="flex items-center justify-center gap-2 cursor-pointer">
+							Iniciar sesión
+							<ArrowRightIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+						</span>
 					</Button>
 
-					<div className="mt-8 text-center text-sm text-gray-600">
-						{/* {"Don't have an account?"}{' '}
-						<Link href="/signup" className="text-blue-600 hover:underline">
-							Create one here
-						</Link> */}
-						<Typography as="p" className="text-center text-sm text-gray-600">
-							Si no puedes iniciar sesión contacta a el equipo de soporte en
-							<Link href="mailto:marketing@contpaqi.com" className="text-blue-600 hover:underline">
-								<br />
+					{/* Divider */}
+					<div className="relative my-6">
+						<div className="absolute inset-0 flex items-center">
+							<div className="w-full border-t border-gray-200"></div>
+						</div>
+						<div className="relative flex justify-center text-sm">
+							<span className="bg-white px-4 text-gray-500">¿Necesitas ayuda?</span>
+						</div>
+					</div>
+
+					{/* Support Contact - Enhanced */}
+					<div className="text-center">
+						<div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-4 border border-blue-100">
+							<Typography as="p" className="text-sm text-gray-600 leading-relaxed">
+								Si no puedes iniciar sesión, contacta al equipo de soporte
+							</Typography>
+							<Link href="mailto:marketing@contpaqi.com" className="inline-flex items-center gap-1 mt-2 text-[#2461A9] hover:text-blue-700 font-medium transition-colors group">
+								<Mail size={16} />
 								marketing@contpaqi.com
+								<ArrowRightIcon className="h-3 w-3 transition-transform group-hover:translate-x-1" />
 							</Link>
+						</div>
+					</div>
+
+					{/* Additional Security Note */}
+					<div className="text-center">
+						<Typography as="p" className="text-xs text-gray-500">
+							🔒 Tu información está protegida y segura
 						</Typography>
 					</div>
 				</div>

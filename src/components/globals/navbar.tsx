@@ -2,9 +2,9 @@
 
 import { logout } from '@/actions/auth/actions'
 import { Button } from '@/components/ui/button'
-import { Session } from '@/lib/auth/definitions'
+import type { Session } from '@/lib/auth/definitions'
 import { cn } from '@/lib/utils'
-import { AlignLeft } from 'lucide-react'
+import { AlignLeft, LogIn, LogOut } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -46,11 +46,19 @@ export const Navigation = ({ session }: NavigationProps) => {
 												return
 											}
 										}}
+										className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold px-6 py-2 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl border-0"
 									>
+										<LogOut className="w-4 h-4 mr-2" />
 										Log Out
 									</Button>
 								) : (
-									<Button onClick={() => redirectToLogin()}>Sign In</Button>
+									<Button
+										onClick={() => redirectToLogin()}
+										className="bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold px-6 py-2 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl border-0"
+									>
+										<LogIn className="w-4 h-4 mr-2" />
+										Sign In
+									</Button>
 								)}
 							</li>
 						</ul>
@@ -83,11 +91,19 @@ export const Navigation = ({ session }: NavigationProps) => {
 
 										setIsOpen(false)
 									}}
+									className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl border-0 cursor-pointer"
 								>
+									<LogOut className="w-4 h-4 mr-2" />
 									Log Out
 								</Button>
 							) : (
-								<Button onClick={() => redirectToLogin()}>Sign In</Button>
+								<Button
+									onClick={() => redirectToLogin()}
+									className="w-full bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl border-0 cursor-pointer"
+								>
+									<LogIn className="w-4 h-4 mr-2" />
+									Sign In
+								</Button>
 							)}
 						</li>
 					</ul>
