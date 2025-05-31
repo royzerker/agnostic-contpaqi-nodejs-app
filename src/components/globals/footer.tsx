@@ -19,11 +19,11 @@ export const Footer = () => {
 
 							<div className="flex flex-col gap-3 sm:flex-row sm:items-center">
 								<Link
-									href="mailto:soporte@compaqi.com"
+									href="mailto:marketing@contpaqi.com"
 									className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/20"
 								>
 									<Mail className="h-4 w-4" />
-									soporte@compaqi.com
+									marketing@contpaqi.com
 								</Link>
 
 								{/* <Link
