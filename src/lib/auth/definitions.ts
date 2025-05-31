@@ -5,6 +5,7 @@
 
 export type Session = {
 	userId: string
+	userName: string
 	token: string
 }
 

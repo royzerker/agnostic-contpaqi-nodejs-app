@@ -29,6 +29,7 @@ export const login = async (signInData: SignInFormType): IAsyncTuple<IAuthRespon
 
 	const session: Session = {
 		userId: res?.id as string,
+		userName: res?.fullName || `${res?.firstName} ${res?.lastName}`,
 		token: res?.accessToken as string
 	}
 
