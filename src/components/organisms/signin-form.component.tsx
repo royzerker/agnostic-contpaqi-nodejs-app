@@ -94,11 +94,11 @@ export const SignInForm = () => {
 
 					<div className="my-6 md:my-12 flex flex-col items-center justify-center gap-4">
 						<Typography as="p" size="xl" weight="semibold" className="text-[#2461A9]">
-							CONTPAQi® profit partner
+							CONTPAQi® Profit Partner
 						</Typography>
 
 						<div className="flex justify-center items-center gap-8 md:gap-12">
-							<AlibabaLogo className="h-4 md:h-5 lg:h-6" />
+							<AlibabaLogo className="h-3 md:h-4 lg:h-5" />
 							{/* <SyncfyLogo className="h-5 md:h-6 lg:h-7" /> */}
 						</div>
 					</div>
