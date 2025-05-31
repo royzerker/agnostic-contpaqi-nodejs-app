@@ -1,6 +1,7 @@
 'use client'
 
 import { login } from '@/actions/auth/actions'
+import { AlibabaLogo } from '@/features/components/atoms/alibaba-logo'
 import { SignInFormSchema, type SignInFormType } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowRightIcon, Mail } from 'lucide-react'
@@ -89,6 +90,17 @@ export const SignInForm = () => {
 						<Typography as="p" className="text-xs text-gray-500">
 							🔒 Tu información está protegida y segura
 						</Typography>
+					</div>
+
+					<div className="my-6 md:my-12 flex flex-col items-center justify-center gap-4">
+						<Typography as="p" size="2xl" className="text-[#2461A9]">
+							CONTPAQi® profit partner
+						</Typography>
+
+						<div className="flex justify-center items-center gap-8 md:gap-12">
+							<AlibabaLogo className="h-4 md:h-5 lg:h-6" />
+							{/* <SyncfyLogo className="h-5 md:h-6 lg:h-7" /> */}
+						</div>
 					</div>
 				</div>
 			</form>

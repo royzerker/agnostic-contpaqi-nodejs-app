@@ -31,14 +31,14 @@ export default async function StreamingPage() {
 
 						<div className="flex flex-col md:flex-row md:items-end md:gap-4">
 							<Typography as="h1" className="text-center text-white md:text-left" size="4xl" weight="semibold">
-								Conferencia CONTPAQi profit
+								Conferencia CONTPAQi Profit Partner
 							</Typography>
 
 							{session?.userId && (
 								<div className="mt-2 md:mt-0 flex items-center justify-center md:justify-start">
 									<div className="bg-gradient-to-r from-blue-400 to-cyan-300 rounded-full px-4 py-1 shadow-lg transform transition-all hover:scale-105">
 										<Typography as="p" className="text-blue-900" size="lg" weight="bold">
-											¡Bienvenido, {session.userName || 'Usuario'}!
+											¡Bienvenid@, {session.userName || 'Usuario'}!
 										</Typography>
 									</div>
 								</div>
@@ -78,14 +78,23 @@ export default async function StreamingPage() {
 						<div className="rounded-xl bg-[#2461A9]/20 p-6 backdrop-blur-sm">
 							<h3 className="mb-2 text-xl font-semibold text-white">Próximos eventos</h3>
 							<ul className="space-y-2 text-white/70">
-								<li className="flex justify-between gap-4">
-									<span> Lectura Bancaria Inteligente: El Siguiente Paso en tu Contabilidad desde CONTPAQi Bancos </span>
-									<span className="w-2/6">5 Junio 2025</span>
+								<li className="grid grid-cols-4 items-center gap-2">
+									<div className="col-span-3">
+										<span className="text-white/70">Diplomado en Auditoría Digital y Cumplimiento Fiscal con CONTPAQi Analiza</span>
+									</div>
+									<div className="text-right">
+										<span className="text-white/80 font-medium whitespace-nowrap">30 Junio 2025</span>
+									</div>
 								</li>
-								{/* <li className="flex justify-between">
-								<span>Sesión de preguntas</span>
-								<span>4 Junio 2025</span>
-								</li> */}
+
+								<li className="grid grid-cols-4 items-center gap-2">
+									<div className="col-span-3">
+										<span className="text-white/70">Taller: Automatización de Procesos Contables con CONTPAQi</span>
+									</div>
+									<div className="text-right">
+										<span className="text-white/80 font-medium whitespace-nowrap">15 Julio 2025</span>
+									</div>
+								</li>
 							</ul>
 						</div>
 					</div>
