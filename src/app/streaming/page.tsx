@@ -92,7 +92,7 @@ export default async function StreamingPage() {
 										<span className="text-white/70">Diplomado en Auditoría Digital y Cumplimiento Fiscal con CONTPAQi Analiza</span>
 									</div>
 									<div className="lg:text-right">
-										<span className="text-white/80 font-medium whitespace-nowrap">15 Junio 2025</span>
+										<span className="text-white/80 font-medium whitespace-nowrap">30 Junio 2025</span>
 									</div>
 								</li>
 							</ul>
