@@ -27,6 +27,8 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
 
 	const users = res?.[0]
 
+	// console.log('totalItems', users?.totalItems)
+
 	return (
 		<div className="min-h-[70vh]">
 			<DataTable

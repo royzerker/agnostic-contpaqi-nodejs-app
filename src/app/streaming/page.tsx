@@ -71,7 +71,7 @@ export default async function StreamingPage() {
 							<h3 className="mb-2 text-xl font-semibold text-white">Detalles del evento</h3>
 							<p className="text-white/70">
 								CONTPAQi Profit® es más que un congreso; es una plataforma transformadora diseñada para inspirar, educar y conectar a contadores, empresarios y emprendedores en
-								México. Desde hace 9 años, hemos reunido a líderes de opinión, expertos en tecnología y pioneros en innovación para comparJr las ideas, herramientas y estrategias
+								México. Desde hace 9 años, hemos reunido a líderes de opinión, expertos en tecnología y pioneros en innovación para compartir las ideas, herramientas y estrategias
 								que marcan la diferencia.
 							</p>
 						</div>
