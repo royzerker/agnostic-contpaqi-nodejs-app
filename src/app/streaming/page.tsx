@@ -80,7 +80,7 @@ export default async function StreamingPage() {
 							<ul className="space-y-2 text-white/70">
 								<li className="grid grid-cols-1 lg:grid-cols-4 items-center gap-2">
 									<div className="lg:col-span-3">
-										<span className="text-white/70">Lectura Bancaria Inteligente: El Siguiente Paso en tu Contabilidad desde CONTPAQi Bancos</span>
+										<span className="text-white/70">Lectura Bancaria Inteligente: El Siguiente Paso en tu Contabilidad desde CONTPAQi Bancos®</span>
 									</div>
 									<div className="lg:text-right">
 										<span className="text-white/80 font-medium whitespace-nowrap">5 Junio 2025</span>
@@ -89,7 +89,7 @@ export default async function StreamingPage() {
 
 								<li className="grid grid-cols-1 lg:grid-cols-4 items-center gap-2">
 									<div className="lg:col-span-3">
-										<span className="text-white/70">Diplomado en Auditoría Digital y Cumplimiento Fiscal con CONTPAQi Analiza</span>
+										<span className="text-white/70">Diplomado en Auditoría Digital y Cumplimiento Fiscal con CONTPAQi Analiza®</span>
 									</div>
 									<div className="lg:text-right">
 										<span className="text-white/80 font-medium whitespace-nowrap">30 Junio 2025</span>
